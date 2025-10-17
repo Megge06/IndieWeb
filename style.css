@@ -1,0 +1,38 @@
+    @media (prefers-color-scheme: dark) {
+      html { background-color: #121212; color: white; }
+      a { color: #ca8465; }
+    }
+    body {
+      line-height: 1.6;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      text-align: center;
+      margin: 1rem auto;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    img.u-photo { border-radius: 50%; }
+    ul { padding: 0; list-style: none; }
+
+    .p-name { font-weight: bold; }
+
+    .p-name:hover {
+      
+      cursor: pointer;
+    }
+
+    .u-photo {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      transition: 0.2s ease;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .u-photo:hover {
+      scale: 1.05;
+      box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+    }
