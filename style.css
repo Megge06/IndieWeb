@@ -29,9 +29,6 @@ body {
   gap: 1rem;
   transition: background-color 200ms ease, color 200ms ease;
 }
-img.character {
-  border-radius: 50%;
-}
 
 .character {
   width: 30rem;
@@ -56,11 +53,12 @@ a {
 }
 .dialogue-box img.dialogue {
   display: block;
-  width: 50rem;
+  width: 35em;
   height: auto;
   z-index: 1;
   position: sticky;
 }
+
 .dialogue-text {
   position: absolute;
   top: 18%;
