@@ -29,14 +29,14 @@ body {
   gap: 1rem;
   transition: background-color 200ms ease, color 200ms ease;
 }
-img.u-photo {
+img.character {
   border-radius: 50%;
 }
 
-.u-photo {
-  width: clamp(96px, 50vmin, 1000px);
-  height: auto;
-  object-fit: cover;
+.character {
+  width: 30rem;
+  height: 30rem;
+  object-fit: scale-down;
   backface-visibility: hidden;
 }
 
@@ -45,11 +45,6 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .u-photo,
-  .dialogue {
-    transition: none !important;
-    transform: none !important;
-  }
 }
 
 .dialogue-box {
@@ -61,10 +56,10 @@ a {
 }
 .dialogue-box img.dialogue {
   display: block;
-  width: 100%;
+  width: 50rem;
   height: auto;
   z-index: 1;
-  position: relative;
+  position: sticky;
 }
 .dialogue-text {
   position: absolute;
