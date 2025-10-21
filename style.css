@@ -18,16 +18,22 @@ body {
   font-family: "Press Start 2p", system-ui, -apple-system, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
   text-align: center;
-  margin: 1rem auto;
+  margin: 0;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   max-width: 96ch;
   padding: 1.25rem;
   gap: 1rem;
   transition: background-color 200ms ease, color 200ms ease;
+
+  background-image: url('Images/background.gif');
+  background-size: cover; /* Makes image cover entire viewport */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* Keeps background fixed when scrolling */
 }
 
 .character {
@@ -47,16 +53,19 @@ a {
 .dialogue-box {
   position: relative;
   display: inline-block;
-  max-width: 100%;
+  width: 100%;
   z-index: 0;
-  margin-top: -4rem;
+  margin-top: -2rem;
 }
 .dialogue-box img.dialogue {
   display: block;
-  width: 35em;
+  width: 80%;
   height: auto;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 1;
   position: sticky;
+  object-fit: contain
 }
 
 .dialogue-text {
