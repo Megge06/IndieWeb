@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="authorization_endpoint" href="https://indieauth.com/auth">
-  <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <!-- To use social readers via microsub, follow these steps.
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <!-- To use social readers via microsub, follow these steps.
     (Details: https://indieweb.org/Microsub#Getting_Started)
     1. After publishing this to your domain, sign in to https://aperture.p3k.io/login with your domain
     2. You will see a <link> tag displayed on your dashboard that looks like:
@@ -15,19 +18,27 @@
     3. Copy that <link> tag and paste it after this HTML comment.
     4. Publish the updated page!
    -->
-  <title>My New Website</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+    <title>Megge</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-  <!-- Reference for representative h-card properties: https://microformats.org/wiki/h-card -->
-  <main class="h-card" rel="author">
-    <img class="u-photo" alt="My profile photo" src="Images/Girl_arms_crossed_confident_1.webp" />
-    <div class="dialogue-box">
-    <img class="dialogue" src="Images/dialogue.png" alt="Dialogue image" />
-    <div class="dialogue-text" role="note">Hello, this is dialogue inside the bubble. My name is Megge, nice to meet you!</div>
-    </div>
-    <!--
+  <body>
+    <!-- Reference for representative h-card properties: https://microformats.org/wiki/h-card -->
+    <main class="h-card" rel="author">
+      <img
+        class="character"
+        alt="Character"
+        src="Images/dialogue_normal.webp"
+      />
+      <div class="dialogue-box">
+        <img
+          class="dialogue"
+          src="Images/dialogue_box.png"
+          alt="Dialogue image"
+        />
+        <div class="dialogue-text" role="note"></div>
+      </div>
+      <!--
     <h1>I'm <span class="p-name">Megge</span>.</h1>
 
     <p class="p-note">
@@ -40,6 +51,7 @@
     <li>Instagram: <a class="u-url" href="https://www.instagram.com/megge066/" rel="me">@megge066</a></li>
     </ul>
   -->
-  </main>
-</body>
+    </main>
+    <script src="script.js"></script>
+  </body>
 </html>
