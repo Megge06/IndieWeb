@@ -20,7 +20,6 @@ dialogueBox.addEventListener("click", function () {
 
   if (index + 1 < text.length) {
     index++;
-    dialogueText.textContent = "";
     typewriterEffect(text[index]);
   } else {
     typewriterEffect("...");
@@ -55,15 +54,15 @@ function typewriterEffect(fullText) {
   let charIndex = 0;
   const typingSpeed = 50;
 
-  typeNextChar();
-}
-
-function typeNextChar() {
-  if (charIndex < cleanText.length) {
-    dialogueText.textContent += cleanText.charAt(charIndex);
-    charIndex++;
-    setTimeout(typeNextChar, typingSpeed);
-  } else {
-    isTyping = false;
+  function typeNextChar() {
+    if (charIndex < cleanText.length) {
+      dialogueText.textContent += cleanText.charAt(charIndex);
+      charIndex++;
+      setTimeout(typeNextChar, typingSpeed);
+    } else {
+      isTyping = false;
+    }
   }
+  typeNextChar();
+
 }
