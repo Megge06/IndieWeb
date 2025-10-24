@@ -63,28 +63,52 @@ body {
 
 .bg-interactive {
   position: absolute;
-  transform: scale(.8);
+  transform: scale(0.8);
   object-fit: contain;
   z-index: 1;
 }
 
-.item-1 { top: 20%; left: 10%; }
-.item-2 { top: 60%; right: 15%; }
+.item-1 {
+  position: absolute;
+  top: 550px;
+  left: 730px;
+  height: 100px;
+  width: 125px;
+  /* Semi‑transparent yellow */
+  background: rgba(255, 215, 0, 0.32);
+  border: 2px solid rgba(255, 215, 0, 0.55);
+  box-shadow: 0 0 10px 4px rgba(255, 215, 0, 0.35);
+  mix-blend-mode: screen; /* Lightens over dark backgrounds */
+  backdrop-filter: brightness(1.15) saturate(1.2); /* Optional enhancement */
+}
+.item-2 {
+  position: absolute;
+  top: 400px;
+  left: 1200px;
+  height: 100px;
+  width: 125px;
+  background-color: blue;
+}
 
-main { position: relative; z-index: 2; }
+main {
+  position: relative;
+  z-index: 2;
+}
 
 .character {
-  transform: scale(.4);
+  transform: scale(0.4);
   z-index: 2;
   margin-top: 3rem;
 }
 
-a { color: var(--accent); }
+a {
+  color: var(--accent);
+}
 
 .dialogue-box {
   position: relative;
   display: inline-flex;
-  transform: scale(.7);
+  transform: scale(0.7);
   z-index: 1;
   bottom: 35%;
   justify-content: center;
