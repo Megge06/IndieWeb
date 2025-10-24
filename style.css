@@ -1,5 +1,5 @@
 :root {
-  --bg: #0e0f14;
+  --bg: #000000;
   --text: #ac3232;
   --accent: #af6d6d;
   --shadow: 0 6px 18px #ac3232;
@@ -29,11 +29,38 @@ body {
   gap: 1rem;
   transition: background-color 200ms ease, color 200ms ease;
 
-  background-image: url('Images/background.gif');
+  background-image: url("Images/background.gif");
   background-size: cover; /* Makes image cover entire viewport */
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll; /* Keeps background fixed when scrolling */
+}
+
+.interactive-background {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.interactive-image-1 {
+  position: absolute;
+  scale: 0.82;
+  top: 418px;
+  right: 70.5px;
+  backface-visibility: hidden;
+}
+
+.interactive-image-2 {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  backface-visibility: hidden;
+}
+
+.interactive-image-1:hover,
+.interactive-image-2:hover {
+  transform: scale(1.05);
+  transition: 200ms ease;
 }
 
 .character {
@@ -65,7 +92,7 @@ a {
   margin-right: auto;
   z-index: 1;
   position: sticky;
-  object-fit: contain
+  object-fit: contain;
 }
 
 .dialogue-text {
