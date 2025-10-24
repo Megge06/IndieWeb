@@ -4,12 +4,12 @@
   --accent: #af6d6d;
   --shadow: 0 6px 18px #ac3232;
   --design-width: 1920;
-  --design-height: 1080;
-  /* Compute a responsive scale based on viewport */
-  --scale: min(
-    calc(100vw / var(--design-width)),
-    calc(100vh / var(--design-height))
-  );
+  --design-height: 900;
+  /* Per-axis scales */
+  --scale-x: calc(100vw / var(--design-width));
+  --scale-y: calc(100vh / var(--design-height));
+  /* Uniform scale (letterbox) */
+  --scale: min(var(--scale-x), var(--scale-y));
 }
 
 html {
@@ -30,7 +30,7 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding: 0;
   gap: 1rem;
   transition: background-color 200ms ease, color 200ms ease;
@@ -47,7 +47,7 @@ body {
   width: calc(var(--design-width) * 1px);
   height: calc(var(--design-height) * 1px);
   transform: scale(var(--scale));
-  transform-origin: top center;
+  transform-origin: top left;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -74,12 +74,6 @@ body {
   left: 730px;
   height: 100px;
   width: 125px;
-  /* Semi‑transparent yellow */
-  background: rgba(255, 215, 0, 0.32);
-  border: 2px solid rgba(255, 215, 0, 0.55);
-  box-shadow: 0 0 10px 4px rgba(255, 215, 0, 0.35);
-  mix-blend-mode: screen; /* Lightens over dark backgrounds */
-  backdrop-filter: brightness(1.15) saturate(1.2); /* Optional enhancement */
 }
 .item-2 {
   position: absolute;
