@@ -64,5 +64,4 @@ function typewriterEffect(fullText) {
     }
   }
   typeNextChar();
-
 }
