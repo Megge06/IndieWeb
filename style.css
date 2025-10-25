@@ -1,19 +1,12 @@
 :root {
-  --bg: #000000;
+  --bg: #0e0f14;
   --text: #ac3232;
   --accent: #af6d6d;
   --shadow: 0 6px 18px #ac3232;
-  --design-width: 1920;
-  --design-height: 900;
-  /* Per-axis scales */
-  --scale-x: calc(100vw / var(--design-width));
-  --scale-y: calc(100vh / var(--design-height));
-  /* Uniform scale (letterbox) */
-  --scale: min(var(--scale-x), var(--scale-y));
 }
 
 html {
-  font-size: 18px;
+  font-size: clamp(14px, 1.2vw + 10px, 18px);
   background-color: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
@@ -21,102 +14,58 @@ html {
 }
 
 body {
-  position: relative;
   line-height: 1.4;
   font-family: "Press Start 2p", system-ui, -apple-system, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
   text-align: center;
   margin: 0;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  padding: 0;
+  max-width: 96ch;
+  padding: 1.25rem;
   gap: 1rem;
   transition: background-color 200ms ease, color 200ms ease;
-  overflow-x: hidden;
-  background-image: url("Images/background.gif");
-  background-size: cover;
+
+  background-image: url('Images/background.gif');
+  background-size: cover; /* Makes image cover entire viewport */
   background-position: center;
   background-repeat: no-repeat;
-  background-color: var(--bg);
-}
-
-.scene {
-  position: relative;
-  width: calc(var(--design-width) * 1px);
-  height: calc(var(--design-height) * 1px);
-  transform: scale(var(--scale));
-  transform-origin: top left;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.interactive-background {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.bg-interactive {
-  position: absolute;
-  transform: scale(0.8);
-  object-fit: contain;
-  z-index: 1;
-}
-
-.item-1 {
-  position: absolute;
-  top: 550px;
-  left: 730px;
-  height: 100px;
-  width: 125px;
-}
-.item-2 {
-  position: absolute;
-  top: 400px;
-  left: 1200px;
-  height: 100px;
-  width: 125px;
-  background-color: blue;
-}
-
-main {
-  position: relative;
-  z-index: 2;
+  background-attachment: scroll; /* Keeps background fixed when scrolling */
 }
 
 .character {
-  transform: scale(0.4);
-  z-index: 2;
-  margin-top: 3rem;
+  width: 30rem;
+  height: 30rem;
+  object-fit: scale-down;
+  backface-visibility: hidden;
 }
 
 a {
   color: var(--accent);
 }
 
-.dialogue-box {
-  position: relative;
-  display: inline-flex;
-  transform: scale(0.7);
-  z-index: 1;
-  bottom: 35%;
-  justify-content: center;
-  align-items: center;
+@media (prefers-reduced-motion: reduce) {
 }
 
+.dialogue-box {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  z-index: 0;
+  margin-top: -2rem;
+}
 .dialogue-box img.dialogue {
   display: block;
-  width: 1200px;
+  width: 80%;
   height: auto;
-  margin: 0 auto;
-  z-index: 2;
-  position: relative;
-  object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  position: sticky;
+  object-fit: contain
 }
 
 .dialogue-text {
@@ -126,12 +75,12 @@ a {
   right: 12%;
   color: var(--text);
   padding: 6px 8px;
-  font-size: clamp(0.55rem, calc(1rem * var(--scale)), 1rem);
+  font-size: 1rem;
   line-height: 1.2;
   text-align: left;
   pointer-events: none;
   white-space: pre-wrap;
-  z-index: 3;
+  z-index: 2;
   box-sizing: border-box;
   max-height: 68%;
   overflow: auto;
