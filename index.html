@@ -31,35 +31,65 @@
   <body>
     <!-- Reference for representative h-card properties: https://microformats.org/wiki/h-card -->
     <main class="h-card" rel="author">
-      <div class="scene">
-        <div class="interactive-background">
-          <img
-            src="Images/computer.png"
-            alt="Computer"
-            class="bg-interactive item-1"
-          />
-          <img
-            src="Images/pills.png"
-            alt="Pills"
-            class="bg-interactive item-2"
-          />
-        </div>
-
+      <img
+        class="character"
+        alt="Character"
+        src="Images/dialogue_normal.webp"
+      />
+      <br>
+      <div class="dialogue-box">
         <img
-          class="character"
-          alt="Character"
-          src="Images/dialogue_normal.webp"
+          class="dialogue"
+          src="Images/dialogue_box.png"
+          alt="Dialogue image"
         />
-
-        <div class="dialogue-box">
-          <img
-            class="dialogue"
-            src="Images/dialogue_box.png"
-            alt="Dialogue image"
-          />
-          <div class="dialogue-text" role="note"></div>
-        </div>
+        <div class="dialogue-text" role="note"></div>
       </div>
+
+      <div class="p-note" style="display: none">
+        Human on the Internet exploring the IndieWeb
+      </div>
+      <a
+        class="u-url u-uid"
+        rel="me"
+        href="https://yourdomain.com"
+        style="display: none"
+        >Megge</a
+      >
+      <a
+        class="u-url"
+        href="https://github.com/Megge06"
+        rel="me"
+        style="display: none"
+        >GitHub</a
+      >
+      <a
+        class="u-url"
+        href="https://myanimelist.net/profile/Megge06"
+        rel="me"
+        style="display: none"
+        >MAL</a
+      >
+      <a
+        class="u-url"
+        href="https://www.instagram.com/megge066/"
+        rel="me"
+        style="display: none"
+        >Instagram</a
+      >
+      <!--
+    <h1>I'm <span class="p-name">Megge</span>.</h1>
+
+    <p class="p-note">
+      ...and I am a human on the Internet.
+    </p>
+    <ul>
+    <li><a class="u-uid u-url" href="__this_page__">My New Website</a></li>
+    <li>Github: <a class="u-url" href="https://github.com/Megge06" rel="me">@megge06</a></li>
+    <li>MAL: <a class="u-url" href="https://myanimelist.net/profile/Megge06" rel="me">@Megge06</a></li>
+    <li>Instagram: <a class="u-url" href="https://www.instagram.com/megge066/" rel="me">@megge066</a></li>
+    </ul>
+  -->
     </main>
     <script src="script.js"></script>
   </body>
