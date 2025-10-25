@@ -1,5 +1,5 @@
 :root {
-  --bg: #0e0f14;
+  --bg: #000000;
   --text: #ac3232;
   --accent: #af6d6d;
   --shadow: 0 6px 18px #ac3232;
@@ -24,7 +24,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  max-width: 96ch;
   padding: 1.25rem;
   gap: 1rem;
   transition: background-color 200ms ease, color 200ms ease;
@@ -59,7 +58,7 @@ a {
 }
 .dialogue-box img.dialogue {
   display: block;
-  width: 80%;
+  width: 70%;
   height: auto;
   margin-left: auto;
   margin-right: auto;
@@ -70,8 +69,8 @@ a {
 
 .dialogue-text {
   position: absolute;
-  top: 18%;
-  left: 12%;
+  top: 10%;
+  left: 18%;
   right: 12%;
   color: var(--text);
   padding: 6px 8px;
