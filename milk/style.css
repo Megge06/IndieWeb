@@ -28,7 +28,7 @@ body {
   gap: 1rem;
   transition: background-color 200ms ease, color 200ms ease;
 
-  background-image: url('../assets/background.gif');
+  background-image: url("../assets/background.gif");
   background-size: cover; /* Makes image cover entire viewport */
   background-position: center;
   background-repeat: no-repeat;
@@ -64,7 +64,7 @@ a {
   margin-right: auto;
   z-index: 1;
   position: sticky;
-  object-fit: contain
+  object-fit: contain;
 }
 
 .dialogue-text {
