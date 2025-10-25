@@ -28,7 +28,7 @@ body {
   gap: 1rem;
   transition: background-color 200ms ease, color 200ms ease;
 
-  background-image: url('Images/background.gif');
+  background-image: url('../assets/background.gif');
   background-size: cover; /* Makes image cover entire viewport */
   background-position: center;
   background-repeat: no-repeat;
