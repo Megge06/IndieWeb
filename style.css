@@ -91,6 +91,7 @@ body.splash-done .bg-splash {
 .triangle-indicator {
   --triangle-width: 15rem;
   --triangle-height: 5rem;
+  --top: 100;
   --rot: 0deg;
   --scale: 1;
   rotate: var(--rot);
@@ -202,6 +203,22 @@ body.splash-done .bg-splash {
   }
   .bg-loop {
     background-image: url("assets/Persona 3 Loop Vertical.gif");
+  }
+  .buttons {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 0;
+    margin-bottom: 5%;
+    height: 90vh;
+  }
+  .btn {
+    font-size: 2.5rem;
+  }
+  .triangle-indicator {
+    --triangle-width: 10rem;
+    --triangle-height: 3rem;
+    --top: 60;
   }
 }
 @media (min-aspect-ratio: 2/1) {
