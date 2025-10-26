@@ -1,50 +1,59 @@
 window.addEventListener("DOMContentLoaded", () => {
+  // Load Loop after Splash
   setTimeout(() => {
     document.body.classList.add("splash-done");
   }, 5040);
 });
 
 function positionTriangle(button) {
-  const triangle = document.querySelector(".triangle-indicator");
+  const triangles = document.querySelectorAll(".triangle-indicator"); //Triangles in array
+  if (!triangles.length || !button) return; // Safety check
+  //Save all the relevant stuff in variables
   const container = document.querySelector(".buttons");
-
-  const buttonRect = button.getBoundingClientRect();
   const containerRect = container.getBoundingClientRect();
+  const btnRect = button.getBoundingClientRect();
 
-  // Get root font size to convert em to px
-  const rootFontSize = parseFloat(
-    getComputedStyle(document.documentElement).fontSize
-  );
+  // Use first triangle as reference for red triangle
+  const ref = triangles[0];
+  const tStyles = getComputedStyle(ref);
+  const triangleWidth =
+    parseFloat(tStyles.borderLeftWidth) + parseFloat(tStyles.borderRightWidth);
+  const triangleHeight = parseFloat(tStyles.borderTopWidth);
 
-  // Read triangle dimensions in em
-  const triangleWidthEm = parseFloat(
-    getComputedStyle(triangle)
-      .getPropertyValue("--triangle-width")
-      .replace("vh", "")
-  );
-  const triangleHeightEm = parseFloat(
-    getComputedStyle(triangle)
-      .getPropertyValue("--triangle-height")
-      .replace("vh", "")
-  );
+  // Base Triangle Position
 
-  // Convert em to px for calculation
-  const triangleWidthPx = triangleWidthEm * rootFontSize;
-  const triangleHeightPx = triangleHeightEm * rootFontSize;
+  const baseLeft =
+    btnRect.left -
+    containerRect.left +
+    (btnRect.width - triangleWidth) / 2 +
+    20;
+  const baseTop = btnRect.bottom - containerRect.top - 100;
 
-  // Center triangle horizontally under button
-  const left =
-    buttonRect.left +
-    buttonRect.width * 1.8 -
-    containerRect.left -
-    triangleWidthPx / 3;
+  // Base randomization for Triangles
+  const baseScale = 1 + (Math.random() * 0.1 - 0.05);
+  const baseRot = Math.random() * 20 - 10;
 
-  // Place below button (convert offset from px to em in CSS if needed)
-  const top = buttonRect.bottom - containerRect.top + triangleHeightPx * 6;
+  triangles.forEach((tri, idx) => {
+    // Slight deterministic offsets per index (second triangle = red)
+    const offsetDir = idx === 0 ? 1 : 1.5;
+    const offsetMag = idx === 0 ? 0 : 5; // px shift for red shadow
+    const leftPx = baseLeft + offsetDir * (offsetMag * 0.6);
+    const topPx = baseTop + offsetDir * (offsetMag * 0.4);
 
-  // Convert back to em for setting position
-  triangle.style.left = `${left / rootFontSize}vh`;
-  triangle.style.top = `${top / rootFontSize}vh`;
+    tri.style.left = leftPx + "px";
+    tri.style.top = topPx + "px";
+
+    const scale = baseScale * (idx === 0 ? 1 : 1.05 + Math.random() * 0.05);
+    const rot = baseRot + (idx === 0 ? 0 : 1 + Math.random());
+
+    tri.style.setProperty("--scale", scale.toFixed(3));
+    tri.style.setProperty("--rot", rot.toFixed(2) + "deg");
+  });
+
+  // Active Button Highlight
+  document
+    .querySelectorAll(".btn")
+    .forEach((b) => b.classList.toggle("is-active", b === button));
 }
 
 const startButton = document.getElementById("startButton");
@@ -54,6 +63,11 @@ const exitButton = document.getElementById("exitButton");
 
 window.addEventListener("load", () => {
   positionTriangle(startButton);
+  if (document.fonts) {
+    document.fonts.ready.then(() =>
+      positionTriangle(document.querySelector(".btn:hover") || startButton)
+    );
+  }
 });
 
 startButton.addEventListener("mouseenter", () => {
@@ -73,8 +87,5 @@ exitButton.addEventListener("mouseenter", () => {
 });
 
 window.addEventListener("resize", () => {
-  const buttons = document.querySelectorAll(".btn");
-  const lastHovered =
-    Array.from(buttons).find((btn) => btn.matches(":hover")) || startButton;
-  positionTriangle(lastHovered);
+  positionTriangle(document.querySelector(".btn:hover") || startButton);
 });
