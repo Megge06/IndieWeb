@@ -10,6 +10,9 @@ body {
   color: #333;
   font-weight: normal;
 }
+a {
+  text-decoration: none;
+}
 .bg-splash,
 .bg-loop {
   position: fixed;
@@ -28,13 +31,11 @@ body {
 }
 .bg-loop {
   background-image: url("assets/Persona 3 loop.gif");
-  opacity: 0;
+  opacity: 1;
+  z-index: -3;
 }
 body.splash-done .bg-splash {
   opacity: 0;
-}
-body.splash-done .bg-loop {
-  opacity: 1;
 }
 .buttons {
   margin-top: 10%;
