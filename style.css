@@ -4,14 +4,18 @@
   font-weight: normal;
   font-style: normal;
 }
-
+@font-face {
+  font-family: "New Rodin Pro";
+  src: url("fonts/FOT-NewRodin\ Pro\ DB.otf");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
-  font-family: "BM Space", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: "New Rodin Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.6;
   color: #333;
 }
-
 .bg-splash,
 .bg-loop {
   position: fixed;
@@ -24,23 +28,157 @@ body {
   background-attachment: fixed;
   z-index: -1;
 }
-
 .bg-splash {
   background-image: url("assets/Persona 3 Splash.gif");
   opacity: 1;
 }
-
 .bg-loop {
   background-image: url("assets/Persona 3 loop.gif");
   opacity: 0;
 }
-
 body.splash-done .bg-splash {
   opacity: 0;
 }
-
 body.splash-done .bg-loop {
   opacity: 1;
+}
+.buttons {
+  margin-top: 20%;
+  margin-right: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.btn {
+  font-family: "New Rodin Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 3.5rem;
+  font-weight: bold;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  filter: url(#water-ripple);
+  transition: 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn:hover {
+  color: #000000;
+  scale: 1.3;
+}
+.startButton {
+  rotate: -6deg;
+  animation: floatStart 4s ease-in-out infinite;
+  color: rgb(117, 228, 243);
+}
+.settingsButton {
+  rotate: 5deg;
+  animation: floatSettings 3.5s ease-in-out infinite;
+  color: aqua;
+}
+.menuButton {
+  rotate: 7deg;
+  animation: floatMenu 4s ease-in-out infinite;
+  color: rgb(129, 184, 247);
+}
+.exitButton {
+  rotate: -7deg;
+  animation: floatExit 3.5s ease-in-out infinite;
+  color: rgb(67, 180, 255);
+}
+
+.triangle-indicator {
+  --triangle-width: 25vh;
+  --triangle-height: 5vh;
+
+  position: absolute;
+  border-left: calc(var(--triangle-width) / 2) solid transparent;
+  border-right: calc(var(--triangle-width) / 2) solid transparent;
+  border-top: var(--triangle-height) solid white;
+  transition: left 0.3s ease, top 0.3s ease;
+  animation: floatTriangle 3.5s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes floatStart {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-3px, -5px);
+  }
+  50% {
+    transform: translate(2px, 3px);
+  }
+  75% {
+    transform: translate(-2px, 4px);
+  }
+}
+
+@keyframes floatSettings {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(3px, -4px);
+  }
+  60% {
+    transform: translate(-2px, 5px);
+  }
+  80% {
+    transform: translate(2px, -3px);
+  }
+}
+
+@keyframes floatMenu {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(7px, 0px);
+  }
+  60% {
+    transform: translate(-2px, 8px);
+  }
+  80% {
+    transform: translate(1px, -3px);
+  }
+}
+
+@keyframes floatExit {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(6px, -4px);
+  }
+  60% {
+    transform: translate(0px, 5px);
+  }
+  80% {
+    transform: translate(7px, 0px);
+  }
+}
+
+@keyframes floatTriangle {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0px, -4px);
+  }
+  50% {
+    transform: translate(2px, 0px);
+  }
+  75% {
+    transform: translate(-2px, 4px);
+  }
 }
 
 @media (max-aspect-ratio: 1/1) {
@@ -51,7 +189,6 @@ body.splash-done .bg-loop {
     background-image: url("assets/Persona 3 Loop Vertical.gif");
   }
 }
-
 @media (min-aspect-ratio: 2/1) {
   .bg-loop {
     background-image: url("assets/Persona 3 loop.gif");

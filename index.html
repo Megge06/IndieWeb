@@ -11,6 +11,46 @@
   <body>
     <div class="bg-splash"></div>
     <div class="bg-loop"></div>
+    <div class="buttons">
+      <p><button id="startButton" class="btn startButton">START</button></p>
+      <p>
+        <button id="settingsButton" class="btn settingsButton">SETTINGS</button>
+      </p>
+      <p>
+        <button id="menuButton" class="btn menuButton">MENU</button>
+      </p>
+      <p>
+        <button id="exitbutton" class="btn exitButton">EXIT</button>
+      </p>
+      <div class="triangle-indicator"></div>
+    </div>
     <script src="script.js"></script>
   </body>
+  <svg style="position: absolute; width: 0; height: 0">
+    <defs>
+      <filter id="water-ripple">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.001 0.001"
+          numOctaves="2"
+          result="noise"
+        >
+          <animate
+            attributeName="baseFrequency"
+            values="0.001 0.001; 0.005 0.005; 0.001 0.001"
+            dur="2s"
+            repeatCount="indefinite"
+          />
+        </feTurbulence>
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="noise"
+          scale="20"
+          xChannelSelector="R"
+          yChannelSelector="G"
+          result="ripple"
+        />
+      </filter>
+    </defs>
+  </svg>
 </html>
