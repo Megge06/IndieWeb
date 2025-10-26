@@ -20,6 +20,8 @@ function positionTriangle(button) {
     parseFloat(tStyles.borderLeftWidth) + parseFloat(tStyles.borderRightWidth);
   const triangleHeight = parseFloat(tStyles.borderTopWidth);
 
+  const topOffset = parseFloat(tStyles.getPropertyValue("--top")) || 100;
+
   // Base Triangle Position
 
   const baseLeft =
@@ -27,7 +29,7 @@ function positionTriangle(button) {
     containerRect.left +
     (btnRect.width - triangleWidth) / 2 +
     20;
-  const baseTop = btnRect.bottom - containerRect.top - 100;
+  const baseTop = btnRect.bottom - containerRect.top - topOffset;
 
   // Base randomization for Triangles
   const baseScale = 1 + (Math.random() * 0.1 - 0.05);
