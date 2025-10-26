@@ -5,6 +5,12 @@
   --shadow: 0 6px 18px #ac3232;
 }
 
+@font-face {
+  font-family: "basis33";
+  src: url(../fonts/basis33.ttf);
+  font-weight: normal;
+}
+
 html {
   font-size: clamp(14px, 1.2vw + 10px, 18px);
   background-color: var(--bg);
@@ -15,7 +21,7 @@ html {
 
 body {
   line-height: 1.4;
-  font-family: "Press Start 2p", system-ui, -apple-system, "Segoe UI", Roboto,
+  font-family: "basis33", system-ui, -apple-system, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
   text-align: center;
   margin: 0;
@@ -67,14 +73,24 @@ a {
   object-fit: contain;
 }
 
+@media (orientation: portrait) {
+  .dialogue-box img.dialogue {
+    content: url("../assets/dialogue_box_vertical.png");
+  }
+  .character {
+    width: 30rem;
+    height: 30rem;
+  }
+}
+
 .dialogue-text {
   position: absolute;
   top: 10%;
   left: 18%;
-  right: 12%;
+  right: 18%;
   color: var(--text);
-  padding: 6px 8px;
-  font-size: 1rem;
+  padding: 10px 12px;
+  font-size: 1.7rem;
   line-height: 1.2;
   text-align: left;
   pointer-events: none;
@@ -82,5 +98,24 @@ a {
   z-index: 2;
   box-sizing: border-box;
   max-height: 68%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+.dialogue-text::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dialogue-text::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dialogue-text::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 2px;
 }
