@@ -60,7 +60,7 @@ body.splash-done .bg-splash {
   margin-left: auto;
   filter: url(#water-ripple);
   transition: 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  letter-spacing: -0.15em; /* tighten slightly */
+  letter-spacing: -0.13em; /* tighten slightly */
 }
 .startButton {
   rotate: -6deg;
@@ -68,17 +68,17 @@ body.splash-done .bg-splash {
   color: rgb(143, 242, 255);
 }
 .settingsButton {
-  rotate: 5deg;
+  rotate: -5deg;
   animation: floatSettings 3.5s ease-in-out infinite;
   color: rgb(76, 251, 251);
 }
 .menuButton {
-  rotate: 7deg;
+  rotate: 0deg;
   animation: floatMenu 4s ease-in-out infinite;
   color: rgb(129, 218, 247);
 }
 .exitButton {
-  rotate: -7deg;
+  rotate: 6deg;
   animation: floatExit 3.5s ease-in-out infinite;
   color: rgb(124, 251, 255);
 }
@@ -93,14 +93,14 @@ body.splash-done .bg-splash {
   --triangle-height: 5rem;
   --top: 100;
   --rot: 0deg;
-  --scale: 1;
+  --scale: 0.8;
   rotate: var(--rot);
   scale: var(--scale);
   position: absolute;
   width: 0;
   height: 0;
-  border-left: calc(var(--triangle-width) / 2) solid transparent;
-  border-right: calc(var(--triangle-width) / 2) solid transparent;
+  border-left: calc(var(--triangle-width)) solid transparent;
+  border-right: calc(var(--triangle-width) / 8) solid transparent;
   border-top: var(--triangle-height) solid white;
   transition: 220ms ease;
   animation: floatTriangle 3.5s ease-in-out infinite;

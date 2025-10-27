@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // Load Loop after Splash
   setTimeout(() => {
     document.body.classList.add("splash-done");
-  }, 5100);
+  }, 4900);
 });
 
 function positionTriangle(button) {
@@ -25,15 +25,12 @@ function positionTriangle(button) {
   // Base Triangle Position
 
   const baseLeft =
-    btnRect.left -
-    containerRect.left +
-    (btnRect.width - triangleWidth) / 2 +
-    20;
+    btnRect.left - containerRect.left + (btnRect.width - triangleWidth) / 2;
   const baseTop = btnRect.bottom - containerRect.top - topOffset;
 
   // Base randomization for Triangles
   const baseScale = 1 + (Math.random() * 0.1 - 0.05);
-  const baseRot = Math.random() * 20 - 10;
+  const baseRot = Math.random() * 10 - 5;
 
   triangles.forEach((tri, idx) => {
     // Slight deterministic offsets per index (second triangle = red)
