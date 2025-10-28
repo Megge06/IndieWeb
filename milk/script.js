@@ -60,8 +60,6 @@ function changeImage(text) {
     if (text.includes(tag)) {
       characterImg.src = `../assets/${filename}`;
       return;
-    } else {
-      characterImg.src = "../assets/normal.webp";
     }
   }
   characterImg.src = "../assets/normal.webp";

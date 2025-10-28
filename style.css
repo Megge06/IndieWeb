@@ -1,3 +1,5 @@
+@import url("reset.css");
+
 @font-face {
   font-family: "Rodin Pro";
   src: url("fonts/FOT-Rodin\ Pro\ UB.otf");
@@ -38,12 +40,12 @@ body.splash-done .bg-splash {
   opacity: 0;
 }
 .buttons {
-  margin-top: 10%;
-  margin-right: 25%;
+  margin: 0 25% 0 0;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: center;
+  min-height: 100vh;
   position: relative;
   isolation: isolate;
   gap: 0rem;
@@ -208,12 +210,12 @@ body.splash-done .bg-splash {
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-    margin-top: 0;
-    margin-bottom: 5%;
-    height: 90vh;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    height: 100vh;
   }
   .btn {
-    font-size: 2.5rem;
+    font-size: 4rem;
   }
   .triangle-indicator {
     --triangle-width: 10rem;
