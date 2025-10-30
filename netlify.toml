@@ -1,8 +1,3 @@
 [build]
   command = "npm run build"
   publish = "."
-
-[[redirects]]
-  from = "/blog/*"
-  to = "/blog/_site/:splat"
-  status = 200
