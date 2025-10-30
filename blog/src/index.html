@@ -6,6 +6,9 @@ title: "Blogs"
 <h1>{{ title }}</h1>
 <ul>
   {% for post in collections.posts %}
-  <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
+  <li>
+    <div>{{post.data.date}}</div>
+    <a href="{{ post.url | url }}">{{ post.data.title }}</a>
+  </li>
   {% endfor %}
 </ul>
