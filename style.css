@@ -63,6 +63,7 @@ body.splash-done .bg-splash {
   filter: url(#water-ripple);
   transition: 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   letter-spacing: -0.13em; /* tighten slightly */
+  margin-top: 3rem;
 }
 .startButton {
   rotate: -6deg;
@@ -93,7 +94,7 @@ body.splash-done .bg-splash {
 .triangle-indicator {
   --triangle-width: 15rem;
   --triangle-height: 5rem;
-  --top: 100;
+  --top: 80;
   --rot: 0deg;
   --scale: 0.8;
   rotate: var(--rot);

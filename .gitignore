@@ -1,3 +1,8 @@
-.vscode
+.vscode/
 Ideas for IndieWeb.txt
-blog/
+
+blog/*
+!blog/.eleventy.js
+!blog/package.json
+!blog/package-lock.json
+!blog/src/
