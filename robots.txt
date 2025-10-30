@@ -1,0 +1,3 @@
+# robots.txt for https://www.megge.me/
+User-agent: *
+Allow: /
