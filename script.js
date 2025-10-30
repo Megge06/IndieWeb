@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // Load Loop after Splash
   setTimeout(() => {
     document.body.classList.add("splash-done");
-  }, 5150);
+  }, 3100);
 });
 
 function positionTriangle(button) {
