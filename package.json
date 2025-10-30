@@ -1,0 +1,7 @@
+{
+  "name": "indieweb",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd blog && npm run build"
+  }
+}
