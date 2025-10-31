@@ -11,6 +11,7 @@ body {
     Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   color: #333;
   font-weight: normal;
+  height: 100%;
 }
 a {
   text-decoration: none;
@@ -28,11 +29,13 @@ a {
   z-index: -2;
 }
 .bg-splash {
-  background-image: url("assets/Persona 3 Splash.gif");
+  background: url("assets/Persona 3 Splash.gif") center/cover no-repeat,
+    linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   opacity: 1;
 }
 .bg-loop {
-  background-image: url("assets/Persona 3 Loop.gif");
+  background: url("assets/Persona 3 Loop.gif") center/cover no-repeat,
+    linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   opacity: 1;
   z-index: -3;
 }
@@ -202,30 +205,44 @@ body.splash-done .bg-splash {
 
 @media (max-aspect-ratio: 1/1) {
   .bg-splash {
-    background-image: url("assets/Persona 3 Splash Vertical.gif");
+    background: url("assets/Persona 3 Splash Vertical.gif") center/cover
+        no-repeat,
+      linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   }
   .bg-loop {
-    background-image: url("assets/Persona 3 Loop Vertical.gif");
+    background: url("assets/Persona 3 Loop Vertical.gif") center/cover no-repeat,
+      linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   }
+
+  html,
+  body {
+    height: 100dvh;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
   .buttons {
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: flex-end;
     margin-top: 0%;
     margin-bottom: 0%;
-    height: 100vh;
+    height: 100dvh;
+    min-height: unset;
+    padding-top: 40dvh;
   }
   .btn {
-    font-size: 4rem;
+    font-size: 2.5rem;
   }
   .triangle-indicator {
     --triangle-width: 10rem;
     --triangle-height: 3rem;
-    --top: 60;
+    --top: 40;
   }
 }
 @media (min-aspect-ratio: 2/1) {
   .bg-loop {
-    background-image: url("assets/Persona 3 loop.gif");
+    background: url("assets/Persona 3 loop.gif") center/cover no-repeat,
+      linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   }
 }
