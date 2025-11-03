@@ -12,6 +12,7 @@ body {
   color: #333;
   font-weight: normal;
   height: 100%;
+  background-color: linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
 }
 a {
   text-decoration: none;

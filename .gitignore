@@ -6,3 +6,8 @@ blog/*
 !blog/package.json
 !blog/package-lock.json
 !blog/src/
+photos/*
+!photos/.eleventy.js
+!photos/package.json
+!photos/package-lock.json
+!photos/src/

@@ -1,0 +1,14 @@
+---
+layout: layouts/home
+title: "Photos"
+---
+
+<h1>{{ title }}</h1>
+{% for photo in photos %}
+<img
+  class="photo"
+  src="{{ 'photos/' + photo.filename | url }}"
+  alt="{{ photo.title }}"
+  loading="lazy"
+/>
+{% endfor %}
