@@ -1,1 +1,44 @@
 @import url("./reset.css");
+
+body {
+  background-color: rgb(252, 169, 255);
+  z-index: 0;
+}
+
+.sidebar {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.sidebar img {
+  height: 100vh;
+  width: auto;
+  display: block;
+}
+
+.left {
+  position: fixed;
+  justify-content: flex-start;
+}
+
+.right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  justify-content: flex-end;
+  transform: scaleX(-1);
+}
+
+.desktop {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: -2;
+  justify-content: center;
+}

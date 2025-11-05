@@ -9,7 +9,6 @@ const text = [
   `Canvas blur semaphore whisper basil satellite. [mentallyabsent]`,
   `Titanium kernel lucid palindrome vector paprika. [selfassured]`,
   `Static radar velvet thistle corkscrew midnight. [paranoid]`,
-  `Meteor fractal zigzag alloy pollen snapshot. [shocked]`,
   `Granite lullaby buffer oat spiral koi. [tired]`,
 ];
 const emotionMap = {
@@ -21,7 +20,6 @@ const emotionMap = {
   "[paranoid]": "paranoid.webp",
   "[sad]": "sad.webp",
   "[selfassured]": "self_assured.webp",
-  "[shocked]": "shocked.webp",
   "[smug]": "smug.webp",
   "[thinking]": "thinking.webp",
   "[tired]": "tired.webp",
@@ -56,11 +54,11 @@ function changeImage(text) {
   // Find matching emotion tag in text
   for (const [tag, filename] of Object.entries(emotionMap)) {
     if (text.includes(tag)) {
-      characterImg.src = `../assets/${filename}`;
+      characterImg.src = `../assets/about_me/${filename}`;
       return;
     }
   }
-  characterImg.src = "../assets/normal.webp";
+  characterImg.src = "../assets/about_me/normal.webp";
 }
 
 function typewriterEffect(fullText) {

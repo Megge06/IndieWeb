@@ -36,7 +36,7 @@ body {
   gap: 1rem;
   transition: background-color 200ms ease, color 200ms ease;
 
-  background-image: url("../assets/background.gif");
+  background-image: url("../assets/about_me/background.gif");
   background-size: cover; /* Makes image cover entire viewport */
   background-position: center;
   background-repeat: no-repeat;
@@ -77,7 +77,7 @@ a {
 
 @media (orientation: portrait) {
   .dialogue-box img.dialogue {
-    content: url("../assets/dialogue_box_vertical.png");
+    content: url("../assets/about_me/dialogue_box_vertical.png");
   }
   .character {
     width: 30rem;
