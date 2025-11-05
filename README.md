@@ -4,13 +4,11 @@ Static personal website with a homepage, About Me page, an Eleventy‑powered bl
 
 ## Features
 
-- Animated homepage (background swap & triangle indicator) ([index.html](index.html), [script.js](script.js), [style.css](style.css))
-- Interactive dialogue + emotion sprites on About Me page ([about_me/index.html](about_me/index.html), [about_me/script.js](about_me/script.js), [about_me/style.css](about_me/style.css))
-- Blog built with Eleventy, draggable post window, time‑based sidebar images ([blog/.eleventy.js](blog/.eleventy.js), [blog/src/index.html](blog/src/index.html), [blog/src/\_includes/layouts/base.html](blog/src/_includes/layouts/base.html))
-- Photo gallery generated from filesystem ([photos/.eleventy.js](photos/.eleventy.js), [photos/src/\_data/photos.js](photos/src/_data/photos.js), [photos/src/index.html](photos/src/index.html))
-- Shared favicon set ([assets/favicon](assets/favicon))
+- Game menu style homepage ([index.html](index.html), [script.js](script.js), [style.css](style.css))
+- Visual novel style about me page ([about_me/index.html](about_me/index.html), [about_me/script.js](about_me/script.js), [about_me/style.css](about_me/style.css))
+- Blog built with Eleventy ([blog/.eleventy.js](blog/.eleventy.js), [blog/src/index.html](blog/src/index.html), [blog/src/\_includes/layouts/base.html](blog/src/_includes/layouts/base.html))
+- Photo gallery built with Eleventy ([photos/.eleventy.js](photos/.eleventy.js), [photos/src/\_data/photos.js](photos/src/_data/photos.js), [photos/src/index.html](photos/src/index.html))
 - Netlify deployment ([netlify.toml](netlify.toml))
-- MIT licensed ([LICENSE](LICENSE))
 
 ## Tech Stack
 
