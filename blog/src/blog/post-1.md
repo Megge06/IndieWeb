@@ -1,5 +1,5 @@
 ---
-layout: layouts/base
+layout: layouts/post
 title: "Test"
 description: "blabla"
 date: "2025-10-30"

@@ -19,6 +19,6 @@ module.exports = function (eleventyConfig) {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
-    pathPrefix: "/blog/_site", // added so urls become /blog/_site/...
+    pathPrefix: "/",
   };
 };

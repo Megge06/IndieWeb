@@ -4,6 +4,21 @@
     {% include "basehead.html" %} {% block head %} {% endblock %}
   </head>
   <body>
+    <div class="sidebar">
+      <img
+        src="{{ '/assets/images/sidebar_day.png' | url }}"
+        alt="Sidebar left"
+        class="left"
+      />
+      <img
+        src="{{ '/assets/images/sidebar_day.png' | url }}"
+        alt="Sidebar right"
+        class="right"
+      />
+    </div>
+    <div class="desktop">
+      <img src="{{ '/assets/images/desktop.png' | url }}" />
+    </div>
     {{ content | safe }}
   </body>
 </html>
