@@ -1,8 +1,14 @@
 @import url("./reset.css");
+@font-face {
+  font-family: "PixelMplus12";
+  src: url(../assets/fonts/PixelMplus12-Regular.ttf);
+}
 
 body {
-  background-color: rgb(252, 169, 255);
+  background-color: #f9e3ff;
   z-index: 0;
+  text-align: center;
+  font: 16px "PixelMplus12", sans-serif;
 }
 
 .sidebar {
@@ -36,9 +42,15 @@ body {
 
 .desktop {
   display: flex;
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
   position: fixed;
   z-index: -2;
   justify-content: center;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .sidebar {
+    display: none;
+  }
 }

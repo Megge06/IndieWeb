@@ -3,13 +3,96 @@ layout: layouts/home
 title: "Blogs"
 ---
 
-<h1>{{ title }}</h1>
-<ul>
-  {% for post in collections.posts %}
-  <li>
-    <div>{{post.data.date}}</div>
-    <a href="{{ post.url | url }}">{{ post.data.title }}</a>
-  </li>
-  {% endfor %}
-</ul>
+<div class="post-window" id="post-window">
+  <h1>{{ title }}</h1>
+  <p>
+    Hello and welcome to my blog! If you want to know about my random thoughts
+    and such, keep an eye on this page. I probably just ramble about random
+    stuff I did in my life and found interesting, so bear with me.
+  </p>
+  <div class="post-list">
+    <ul>
+      {% for post in collections.posts %}
+      <li>
+        <p>
+          <img src="assets/images/icon_cho.png">
+          <p>{{ post.data.author }} <a href="{{ post.url | url }}">{{ post.data.title }}</a></p>
+          <p class="post-description">{{post.data.description}}</p>
+          <p class="post-date">{{post.data.date}}</p>
+        </p>
+        <p class ="interactions"><img src="assets/images/icon_star.png"><img src="assets/images/icon_retweet.png"></p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
+
+<script>
+  (function () {
+    if (!window.matchMedia("(min-aspect-ratio: 1/1)").matches) {
+      return;
+    }
+
+    const win = document.getElementById("post-window");
+    let dragging = false;
+    let startX = 0,
+      startY = 0,
+      origLeft = 0,
+      origTop = 0;
+
+    function px(v) {
+      return v + "px";
+    }
+
+    function beginDrag(clientX, clientY) {
+      const r = win.getBoundingClientRect();
+      startX = clientX;
+      startY = clientY;
+      origLeft = r.left;
+      origTop = r.top;
+      dragging = true;
+    }
+
+    function moveDrag(clientX, clientY) {
+      if (!dragging) return;
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+      win.style.left = px(origLeft + dx);
+      win.style.top = px(origTop + dy);
+    }
+
+    function endDrag() {
+      dragging = false;
+    }
+
+    win.addEventListener("mousedown", (e) => {
+      if (e.target !== win) return;
+      beginDrag(e.clientX, e.clientY);
+      e.preventDefault();
+    });
+
+    window.addEventListener("mousemove", (e) => moveDrag(e.clientX, e.clientY));
+    window.addEventListener("mouseup", endDrag);
+
+    win.addEventListener(
+      "touchstart",
+      (e) => {
+        const t = e.touches[0];
+        if (e.target !== win) return;
+        beginDrag(t.clientX, t.clientY);
+      },
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "touchmove",
+      (e) => {
+        const t = e.touches[0];
+        moveDrag(t.clientX, t.clientY);
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("touchend", endDrag);
+  })();
+</script>

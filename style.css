@@ -30,12 +30,12 @@ a {
   z-index: -2;
 }
 .bg-splash {
-  background: url("assets/persona_3_splash.webp") center/cover no-repeat,
+  background: url("assets/home/persona_3_splash.webp") center/cover no-repeat,
     linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   opacity: 1;
 }
 .bg-loop {
-  background: url("assets/persona_3_loop.webp") center/cover no-repeat,
+  background: url("assets/home/persona_3_loop.webp") center/cover no-repeat,
     linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   opacity: 1;
   z-index: -3;
@@ -206,12 +206,12 @@ body.splash-done .bg-splash {
 
 @media (max-aspect-ratio: 1/1) {
   .bg-splash {
-    background: url("assets/persona_3_splash_vertical.webp") center/cover
+    background: url("assets/home/persona_3_splash_vertical.webp") center/cover
         no-repeat,
       linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   }
   .bg-loop {
-    background: url("assets/persona_3_loop_vertical.webp") center/cover
+    background: url("assets/home/persona_3_loop_vertical.webp") center/cover
         no-repeat,
       linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   }
@@ -244,7 +244,7 @@ body.splash-done .bg-splash {
 }
 @media (min-aspect-ratio: 2/1) {
   .bg-loop {
-    background: url("assets/persona_3_loop.webp") center/cover no-repeat,
+    background: url("assets/home/persona_3_loop.webp") center/cover no-repeat,
       linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   }
 }
