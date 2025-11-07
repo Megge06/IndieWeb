@@ -1,19 +1,54 @@
+function updateVideoSources() {
+  const splashVideo = document.querySelector(".bg-splash");
+  const loopVideo = document.querySelector(".bg-loop");
+  const isVertical = window.matchMedia("(max-aspect-ratio: 1/1)").matches;
+
+  if (isVertical) {
+    splashVideo.querySelector("source").src =
+      "assets/home/persona_3_splash_vertical.mp4";
+    loopVideo.querySelector("source").src =
+      "assets/home/persona_3_loop_vertical.mp4";
+  } else {
+    splashVideo.querySelector("source").src =
+      "assets/home/persona_3_splash.mp4";
+    loopVideo.querySelector("source").src = "assets/home/persona_3_loop.mp4";
+  }
+
+  splashVideo.load();
+  loopVideo.load();
+}
+
 window.addEventListener("DOMContentLoaded", () => {
-  // Load Loop after Splash
+  updateVideoSources();
+
+  const splashVideo = document.querySelector(".bg-splash");
+
+  splashVideo.addEventListener("ended", () => {
+    document.body.classList.add("splash-done");
+  });
+
   setTimeout(() => {
     document.body.classList.add("splash-done");
   }, 3100);
 });
 
+window.addEventListener("resize", () => {
+  const currentSrc = document.querySelector(".bg-splash source").src;
+  const isVertical = window.matchMedia("(max-aspect-ratio: 1/1)").matches;
+  const shouldBeVertical = currentSrc.includes("vertical");
+
+  if (isVertical !== shouldBeVertical) {
+    updateVideoSources();
+  }
+});
+
 function positionTriangle(button) {
-  const triangles = document.querySelectorAll(".triangle-indicator"); //Triangles in array
-  if (!triangles.length || !button) return; // Safety check
-  //Save all the relevant stuff in variables
+  const triangles = document.querySelectorAll(".triangle-indicator");
+  if (!triangles.length || !button) return;
   const container = document.querySelector(".buttons");
   const containerRect = container.getBoundingClientRect();
   const btnRect = button.getBoundingClientRect();
 
-  // Use first triangle as reference for red triangle
   const ref = triangles[0];
   const tStyles = getComputedStyle(ref);
   const triangleWidth =
@@ -22,20 +57,16 @@ function positionTriangle(button) {
 
   const topOffset = parseFloat(tStyles.getPropertyValue("--top")) || 100;
 
-  // Base Triangle Position
-
   const baseLeft =
     btnRect.left - containerRect.left + (btnRect.width - triangleWidth) / 2;
   const baseTop = btnRect.bottom - containerRect.top - topOffset;
 
-  // Base randomization for Triangles
   const baseScale = 1 + (Math.random() * 0.1 - 0.05);
   const baseRot = Math.random() * 10 - 5;
 
   triangles.forEach((tri, idx) => {
-    // Slight deterministic offsets per index (second triangle = red)
     const offsetDir = idx === 0 ? 1 : 1.5;
-    const offsetMag = idx === 0 ? 0 : 5; // px shift for red shadow
+    const offsetMag = idx === 0 ? 0 : 5;
     const leftPx = baseLeft + offsetDir * (offsetMag * 0.6);
     const topPx = baseTop + offsetDir * (offsetMag * 0.4);
 
@@ -49,7 +80,6 @@ function positionTriangle(button) {
     tri.style.setProperty("--rot", rot.toFixed(2) + "deg");
   });
 
-  // Active Button Highlight
   document
     .querySelectorAll(".btn")
     .forEach((b) => b.classList.toggle("is-active", b === button));

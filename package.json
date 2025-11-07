@@ -2,8 +2,6 @@
   "name": "indieweb",
   "version": "1.0.0",
   "scripts": {
-    "build": "(cd blog && npm run build) && (cd photos && npm run build)",
-    "build:blog": "cd blog && npm run build",
-    "build:photos": "cd photos && npm run build"
+    "build": "(cd blog && npm run build) && (cd photos && npm run build)"
   }
 }

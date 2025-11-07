@@ -24,19 +24,17 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  object-fit: cover;
   z-index: -2;
 }
+
 .bg-splash {
-  background: url("assets/Persona 3 Splash.gif") center/cover no-repeat,
-    linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
+  background: linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   opacity: 1;
 }
+
 .bg-loop {
-  background: url("assets/Persona 3 Loop.gif") center/cover no-repeat,
-    linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
+  background: linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   opacity: 1;
   z-index: -3;
 }
@@ -205,16 +203,6 @@ body.splash-done .bg-splash {
 }
 
 @media (max-aspect-ratio: 1/1) {
-  .bg-splash {
-    background: url("assets/Persona 3 Splash Vertical.gif") center/cover
-        no-repeat,
-      linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
-  }
-  .bg-loop {
-    background: url("assets/Persona 3 Loop Vertical.gif") center/cover no-repeat,
-      linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
-  }
-
   html,
   body {
     height: 100dvh;
@@ -239,11 +227,5 @@ body.splash-done .bg-splash {
     --triangle-width: 10rem;
     --triangle-height: 3rem;
     --top: 40;
-  }
-}
-@media (min-aspect-ratio: 2/1) {
-  .bg-loop {
-    background: url("assets/Persona 3 loop.gif") center/cover no-repeat,
-      linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
   }
 }

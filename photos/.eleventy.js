@@ -2,10 +2,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/css": "css" });
   eleventyConfig.addPassthroughCopy({ "src/photos": "photos" });
+  eleventyConfig.addPassthroughCopy({ "src/favicon": "favicon" });
 
   eleventyConfig.addWatchTarget("src/css/");
   eleventyConfig.addWatchTarget("src/assets/");
   eleventyConfig.addWatchTarget("src/photos/");
+  eleventyConfig.addWatchTarget("src/favicon/");
 
   eleventyConfig.addCollection("photos", function (collectionApi) {
     return collectionApi.getFilteredByGlob("src/photos/*").reverse();
