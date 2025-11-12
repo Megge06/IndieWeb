@@ -1,7 +1,20 @@
 {
   "name": "indieweb",
+  "private": true,
   "version": "1.0.0",
+  "workspaces": ["blog", "photos"],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "build": "(cd blog && npm run build) && (cd photos && npm run build)"
+    "build": "npm run build --workspaces",
+    "build:blog": "npm run build -w blog",
+    "build:photos": "npm run build -w photos",
+    "start:blog": "npm run start -w blog",
+    "start:photos": "npm run start -w photos",
+    "clean": "rm -rf blog/_site photos/_site node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
