@@ -14,14 +14,19 @@ title: "Blogs"
     <ul>
       {% for post in collections.posts %}
       <li>
+        <img src="assets/images/icon_cho.png" alt="Author icon" />
         <p>
-          <img src="assets/images/icon_cho.png">
-          <p>{{ post.data.author }} <a href="{{ post.url | url }}">{{ post.data.title }}</a></p>
-          <p class="post-description">{{post.data.description}}</p>
-          <p class="post-date">{{post.data.date}}</p>
+          {{ post.data.author }}
+          <a href="{{ post.url | url }}">{{ post.data.title }}</a>
         </p>
-        <p class ="interactions"><img src="assets/images/icon_star.png"><img src="assets/images/icon_retweet.png"></p>
+        <p class="post-description">{{post.data.description}}</p>
+        <p class="post-date">{{post.data.date}}</p>
+        <p class="interactions">
+          <img src="assets/images/icon_star.png" alt="Star" />
+          <img src="assets/images/icon_retweet.png" alt="Retweet" />
+        </p>
       </li>
+
       {% endfor %}
     </ul>
   </div>
