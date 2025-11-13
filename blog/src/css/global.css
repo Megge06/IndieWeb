@@ -1,3 +1,10 @@
+:root {
+  --cursor-auto: url("../assets/cursor/nso_point.cur"), auto;
+  --cursor-pointer: url("../assets/cursor/nso_point.cur"), pointer;
+  --cursor-move: url("../assets/cursor/nso_move.cur"), move;
+  --cursor-text: url("../assets/cursor/nso_textselector.cur"), text;
+}
+
 @import url("./reset.css");
 @font-face {
   font-family: "PixelMplus12";
@@ -9,6 +16,13 @@ body {
   z-index: 0;
   text-align: center;
   font: 16px "PixelMplus12", sans-serif;
+  cursor: var(--cursor-auto);
+}
+
+a {
+  color: rgb(185, 92, 174);
+  font-size: 20px;
+  cursor: var(--cursor-pointer);
 }
 
 .sidebar {

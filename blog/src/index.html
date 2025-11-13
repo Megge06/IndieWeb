@@ -14,26 +14,46 @@ title: "Blogs"
     <ul>
       {% for post in collections.posts %}
       <li>
+        <img src="assets/images/icon_cho.png" alt="Author icon" />
         <p>
-          <img src="assets/images/icon_cho.png">
-          <p>{{ post.data.author }} <a href="{{ post.url | url }}">{{ post.data.title }}</a></p>
-          <p class="post-description">{{post.data.description}}</p>
-          <p class="post-date">{{post.data.date}}</p>
+          {{ post.data.author }}
+          <a
+            href="#"
+            onclick="loadPost('{{ post.url | url }}', event); return false;"
+            >{{ post.data.title }}</a
+          >
         </p>
-        <p class ="interactions"><img src="assets/images/icon_star.png"><img src="assets/images/icon_retweet.png"></p>
+        <p class="post-description">{{post.data.description}}</p>
+        <p class="post-date">{{post.data.date}}</p>
+        <p class="interactions">
+          <img src="assets/images/icon_star.png" alt="Star" />
+          <img src="assets/images/icon_retweet.png" alt="Retweet" />
+        </p>
       </li>
+
       {% endfor %}
     </ul>
   </div>
 </div>
 
-<script>
-  (function () {
-    if (!window.matchMedia("(min-aspect-ratio: 1/1)").matches) {
-      return;
-    }
+<div class="ame-window" id="ame-window">
+  <img
+    class="ame"
+    src="assets/images/ame/neutral.png"
+    onclick="setAmeExpressionTemp('smiling');"
+  />
+</div>
 
-    const win = document.getElementById("post-window");
+<script>
+  const win = document.getElementById("post-window");
+  const ame = document.getElementById("ame-window");
+  const img = ame.querySelector("img.ame");
+  const originalListHTML = win.innerHTML;
+
+  function enableDragging(el) {
+    if (!el) return;
+    if (!window.matchMedia("(min-aspect-ratio: 1/1)").matches) return;
+
     let dragging = false;
     let startX = 0,
       startY = 0,
@@ -43,42 +63,37 @@ title: "Blogs"
     function px(v) {
       return v + "px";
     }
-
     function beginDrag(clientX, clientY) {
-      const r = win.getBoundingClientRect();
+      const r = el.getBoundingClientRect();
       startX = clientX;
       startY = clientY;
       origLeft = r.left;
       origTop = r.top;
       dragging = true;
     }
-
     function moveDrag(clientX, clientY) {
       if (!dragging) return;
       const dx = clientX - startX;
       const dy = clientY - startY;
-      win.style.left = px(origLeft + dx);
-      win.style.top = px(origTop + dy);
+      el.style.left = px(origLeft + dx);
+      el.style.top = px(origTop + dy);
     }
-
     function endDrag() {
       dragging = false;
     }
-
-    win.addEventListener("mousedown", (e) => {
-      if (e.target !== win) return;
+    el.addEventListener("mousedown", (e) => {
+      if (e.target !== el) return;
       beginDrag(e.clientX, e.clientY);
       e.preventDefault();
     });
-
     window.addEventListener("mousemove", (e) => moveDrag(e.clientX, e.clientY));
     window.addEventListener("mouseup", endDrag);
 
-    win.addEventListener(
+    el.addEventListener(
       "touchstart",
       (e) => {
         const t = e.touches[0];
-        if (e.target !== win) return;
+        if (e.target !== el) return;
         beginDrag(t.clientX, t.clientY);
       },
       { passive: true }
@@ -94,5 +109,52 @@ title: "Blogs"
     );
 
     window.addEventListener("touchend", endDrag);
-  })();
+  }
+
+  enableDragging(win);
+  enableDragging(ame);
+
+  async function loadPost(url, event) {
+    console.log("Trying to fetch:", url);
+    if (event) event.preventDefault();
+    try {
+      const postContent = await fetch(url);
+      const text = await postContent.text();
+      win.innerHTML = text;
+    } catch (err) {
+      console.error("Failed to load post:", err);
+    }
+  }
+  function loadList() {
+    win.innerHTML = originalListHTML;
+  }
+
+  function setAmeExpressionTemp(expression, length = 1500) {
+    if (!ame) return;
+    if (!img) return;
+    if (img.id == "ame-temp-expression") return;
+    img.src = `assets/images/ame/${expression}.png`;
+    img.id = "ame-temp-expression";
+    setTimeout(() => {
+      img.src = `assets/images/ame/neutral.png`;
+      img.removeAttribute("id");
+    }, length);
+  }
+
+  function blink() {
+    if (img.id == "ame-temp-expression") return;
+    img.src = "assets/images/ame/blink.png";
+    setTimeout(() => {
+      img.src = "assets/images/ame/neutral.png";
+    }, 150);
+  }
+
+  function randomExpression() {
+    const expressions = ["game", "movie", "obsessed"];
+    const expr = expressions[Math.floor(Math.random() * expressions.length)];
+    setAmeExpressionTemp(expr, 5000);
+  }
+
+  setInterval(randomExpression, 20000);
+  setInterval(blink, 3000 + Math.random() * 2000);
 </script>

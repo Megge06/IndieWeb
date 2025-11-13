@@ -11,3 +11,4 @@ photos/*
 !photos/package.json
 !photos/package-lock.json
 !photos/src/
+node_modules/
