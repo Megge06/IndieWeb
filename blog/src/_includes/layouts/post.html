@@ -1,5 +1,8 @@
-{% extends "layouts/base.html" %} {% block head %}
-
-<link rel="stylesheet" href="css/post.css" />
-
-{% endblock %}
+<div class="post-header">
+  <img src="assets/images/icon_cho.png" alt="profile-picture" />
+  {{ author }} {{ title }}
+</div>
+<div class="post-content">{{ content | safe }}</div>
+<a href="#" onclick="loadList();">
+  <img class="back-button" src="assets/images/previous.png" /> Post List</a
+>
