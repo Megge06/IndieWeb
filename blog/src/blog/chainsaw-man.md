@@ -1,7 +1,7 @@
 ---
 layout: layouts/post
 title: "The Chainsaw Man movie was really good"
-description: "I recently went to see the Chainsaw Man Movie in Theaters with some friends and it was the best cinema experience I've had in a long time."
+description: "I recently went to see the Chainsaw Man movie in theaters with some friends and it was the best cinema experience I've had in a long time."
 date: "2025-11-13"
 author: "Megge"
 categories:

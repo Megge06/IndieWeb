@@ -60,7 +60,7 @@ a {
   width: 100%;
   position: fixed;
   z-index: -2;
-  justify-content: center;
+  justify-content: left;
 }
 
 @media (max-aspect-ratio: 1/1) {
