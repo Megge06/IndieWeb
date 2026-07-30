@@ -20,6 +20,6 @@
     "clean": "rm -rf frontend/blog/_site frontend/photos/_site node_modules"
   },
   "devDependencies": {
-    "concurrently": "^10.0.3"
+    "concurrently": "^10.0.4"
   }
 }
