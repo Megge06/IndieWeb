@@ -67,6 +67,135 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 2rem;
+}
+
+.bottom-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 900px) {
+  .bottom-container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 60rem;
+    width: 90%;
+  }
+
+  #guestbook-form {
+    flex: 1.2;
+    max-width: 32rem;
+    width: 100%;
+  }
+
+  #phan-poll {
+    flex: 0.8;
+    max-width: 22rem;
+    width: 100%;
+  }
+}
+
+#phan-poll {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 80%;
+  max-width: 35rem;
+  padding: 1.25rem 1.5rem;
+  color: var(--p-white);
+  background-color: var(--p-black);
+  clip-path: polygon(1% 2%, 99% 0%, 98% 97%, 0% 100%);
+  transform: rotate(-0.5deg) skewX(-3deg);
+}
+
+.poll-question {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.poll-q {
+  color: var(--p-black);
+  background-color: var(--p-white);
+  padding: 0.1rem 0.4rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  transform: rotate(-4deg) skewX(-6deg);
+  display: inline-block;
+}
+
+.poll-text {
+  letter-spacing: 0.05em;
+}
+
+.poll-just {
+  color: var(--p-red);
+  font-weight: bold;
+}
+
+.poll-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.poll-bar {
+  flex: 1;
+  height: 1.6rem;
+  background-color: var(--p-white);
+  transform: skewX(-10deg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+#poll-bar-fill {
+  height: 100%;
+  background-color: var(--p-red);
+  transition: width 0.4s ease;
+}
+
+.poll-stats {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  transform: skewX(-6deg);
+}
+
+.poll-yes-label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--p-white);
+}
+
+#poll-pct {
+  font-size: 2rem;
+  font-weight: bold;
+  font-style: italic;
+  color: var(--p-red);
+  text-shadow: 2px 2px 0 var(--p-black);
+}
+
+.poll-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+#poll-msg {
+  font-size: 0.85rem;
+  color: var(--p-red);
+  text-align: right;
+  letter-spacing: 0.05em;
 }
 
 #pagination {

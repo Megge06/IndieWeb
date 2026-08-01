@@ -22,13 +22,17 @@ var (
 	rateMu   sync.Mutex
 )
 
-// allowRateLimit returns true when the request should be accepted.
 func allowRateLimit(key string) bool {
+	return allowCustomRateLimit("default:"+key, rateLimitEvery, rateLimitBurst)
+}
+
+// allowCustomRateLimit allows decoupled rate limits per feature
+func allowCustomRateLimit(key string, interval time.Duration, burst int) bool {
 	rateMu.Lock()
 	defer rateMu.Unlock()
 	e, ok := limiters[key]
 	if !ok {
-		e = &limiterEntry{lim: rate.NewLimiter(rate.Every(rateLimitEvery), rateLimitBurst)}
+		e = &limiterEntry{lim: rate.NewLimiter(rate.Every(interval), burst)}
 		limiters[key] = e
 	}
 	e.seen = time.Now()

@@ -47,6 +47,18 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// Initialize Poll Votes Table if non existent
+	_, err = db.Exec(`CREATE TABLE IF NOT EXISTS poll_votes (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	vote TEXT NOT NULL,
+	ip TEXT NOT NULL,
+	date DATETIME NOT NULL
+	)`)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	database := Database{db: db}
 
 	//Rate limit cleanup routine
@@ -55,6 +67,7 @@ func main() {
 	//Initialise handlers
 	http.HandleFunc("/api/guestbook", database.guestbookHandler)
 	http.HandleFunc("/api/comments", database.commentsHandler)
+	http.HandleFunc("/api/poll", database.pollHandler)
 
 	//Listen and serve through http.Server in background
 	server := &http.Server{

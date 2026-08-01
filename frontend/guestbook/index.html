@@ -68,61 +68,90 @@
         >
         <button id="next">Next Page</button>
       </nav>
-      <form id="guestbook-form">
-        <p id="form-header">Leave a Message</p>
-        <div class="form-top-row">
-          <div class="form-group">
-            <label for="form-name">Name</label>
-            <input
-              id="form-name"
-              name="name"
-              type="text"
-              maxlength="50"
-              required
-            />
-          </div>
 
-          <div class="form-group">
-            <label>Avatar</label>
-            <div id="avatar-carousel">
-              <button
-                type="button"
-                id="avatar-prev"
-                aria-label="Previous Avatar"
-              >
-                &lt;
-              </button>
-              <img
-                id="avatar-preview"
-                src="../assets/guestbook/chat_icons/phantom.webp"
-                alt="phantom"
+      <div class="bottom-container">
+        <form id="guestbook-form">
+          <p id="form-header">Leave a Message</p>
+          <div class="form-top-row">
+            <div class="form-group">
+              <label for="form-name">Name</label>
+              <input
+                id="form-name"
+                name="name"
+                type="text"
+                maxlength="50"
+                required
               />
-              <button type="button" id="avatar-next" aria-label="Next Avatar">
-                &gt;
-              </button>
             </div>
-            <input
-              type="hidden"
-              id="form-avatar"
-              name="avatar"
-              value="phantom"
-            />
+
+            <div class="form-group">
+              <label>Avatar</label>
+              <div id="avatar-carousel">
+                <button
+                  type="button"
+                  id="avatar-prev"
+                  aria-label="Previous Avatar"
+                >
+                  &lt;
+                </button>
+                <img
+                  id="avatar-preview"
+                  src="../assets/guestbook/chat_icons/phantom.webp"
+                  alt="phantom"
+                />
+                <button type="button" id="avatar-next" aria-label="Next Avatar">
+                  &gt;
+                </button>
+              </div>
+              <input
+                type="hidden"
+                id="form-avatar"
+                name="avatar"
+                value="phantom"
+              />
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="form-message">Message</label>
-          <textarea
-            id="form-message"
-            name="message"
-            maxlength="1000"
-            required
-          ></textarea>
-        </div>
+          <div class="form-group">
+            <label for="form-message">Message</label>
+            <textarea
+              id="form-message"
+              name="message"
+              maxlength="1000"
+              required
+            ></textarea>
+          </div>
 
-        <button type="submit" id="submit">Post Message</button>
-        <p id="form-error" hidden>Something went wrong. Try again.</p>
-      </form>
+          <button type="submit" id="submit">Post Message</button>
+          <p id="form-error" hidden>Something went wrong. Try again.</p>
+        </form>
+
+        <section id="phan-poll" aria-label="Phantom Thieves Poll">
+          <div class="poll-question">
+            <span class="poll-q">Q</span>
+            <span class="poll-text"
+              >Are the Phantom Thieves
+              <span class="poll-just">JUST</span>?</span
+            >
+          </div>
+
+          <div class="poll-bar-row">
+            <div class="poll-bar">
+              <div id="poll-bar-fill" style="width: 50%"></div>
+            </div>
+            <div class="poll-stats">
+              <span class="poll-yes-label">YES</span>
+              <span id="poll-pct">50.0%</span>
+            </div>
+          </div>
+
+          <div class="poll-buttons">
+            <button type="button" id="vote-yes">YES</button>
+            <button type="button" id="vote-no">NO</button>
+          </div>
+          <p id="poll-msg" hidden></p>
+        </section>
+      </div>
     </main>
     <script src="script.js" defer></script>
   </body>

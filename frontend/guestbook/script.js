@@ -167,7 +167,11 @@ function renderEntries(entries) {
     const date = document.createElement("span");
     date.className = "message-date";
     const d = new Date(entry.date);
-    date.textContent = d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+    date.textContent = d.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
 
     article.appendChild(avatarWrap);
     article.appendChild(name);
@@ -237,3 +241,70 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     console.error("Post failed:", err);
   }
 });
+
+// Poll Functionality
+async function loadPollStats() {
+  try {
+    const res = await fetch("/api/poll");
+    if (!res.ok) return;
+    const stats = await res.json();
+    updatePollUI(stats);
+  } catch (err) {
+    console.error("Failed to load poll stats:", err);
+  }
+}
+
+function updatePollUI(stats) {
+  const barFill = document.querySelector("#poll-bar-fill");
+  const pctText = document.querySelector("#poll-pct");
+  if (barFill && pctText) {
+    barFill.style.width = `${stats.yes_pct}%`;
+    pctText.textContent = `${stats.yes_pct.toFixed(1)}%`;
+  }
+}
+
+async function handleVote(voteType) {
+  const msgEl = document.querySelector("#poll-msg");
+  if (msgEl) msgEl.hidden = true;
+
+  try {
+    const res = await fetch("/api/poll", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ vote: voteType }),
+    });
+
+    if (res.ok) {
+      const stats = await res.json();
+      updatePollUI(stats);
+      if (msgEl) {
+        msgEl.textContent = "Vote recorded!";
+        msgEl.style.color = "var(--p-white)";
+        msgEl.hidden = false;
+      }
+    } else {
+      const errText = await res.text();
+      if (msgEl) {
+        msgEl.textContent = errText.trim() || "Rate limited or error.";
+        msgEl.style.color = "var(--p-red)";
+        msgEl.hidden = false;
+      }
+    }
+  } catch (err) {
+    if (msgEl) {
+      msgEl.textContent = "Something went wrong.";
+      msgEl.style.color = "var(--p-red)";
+      msgEl.hidden = false;
+    }
+    console.error("Vote failed:", err);
+  }
+}
+
+document
+  .querySelector("#vote-yes")
+  ?.addEventListener("click", () => handleVote("yes"));
+document
+  .querySelector("#vote-no")
+  ?.addEventListener("click", () => handleVote("no"));
+
+loadPollStats();
