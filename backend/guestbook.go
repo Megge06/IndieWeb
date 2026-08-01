@@ -62,7 +62,8 @@ func normalizeIP(ip string) string {
 // Handles requests to the guestbook
 func (d *Database) guestbookHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	if r.Method == "GET" {
+	switch r.Method {
+	case http.MethodGet:
 		// Get requested entries from URL
 		pageStr := r.URL.Query().Get("page")
 		limitStr := r.URL.Query().Get("limit")
@@ -84,7 +85,7 @@ func (d *Database) guestbookHandler(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "database error", http.StatusInternalServerError)
 			return
 		}
-		defer rows.Close() // close when finished
+		defer func() { _ = rows.Close() }() // close when finished
 		entries := []Entry{}
 		// Put all entries into an array
 		for rows.Next() {
@@ -97,8 +98,8 @@ func (d *Database) guestbookHandler(w http.ResponseWriter, r *http.Request) {
 			entries = append(entries, e)
 		}
 		// Put entries into json
-		json.NewEncoder(w).Encode(entries)
-	} else if r.Method == "POST" {
+		_ = json.NewEncoder(w).Encode(entries)
+	case http.MethodPost:
 		// Rate-limit before doing any work
 		if !allowRateLimit(rateLimitKey(r)) {
 			http.Error(w, "rate limited", http.StatusTooManyRequests)
@@ -142,7 +143,7 @@ func (d *Database) guestbookHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		w.WriteHeader(http.StatusCreated)
-	} else {
+	default:
 		// Error handling
 		w.WriteHeader(http.StatusMethodNotAllowed)
 	}

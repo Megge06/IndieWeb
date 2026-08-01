@@ -61,7 +61,11 @@ func main() {
 		Addr:    ":8080",
 		Handler: corsMiddleware(http.DefaultServeMux),
 	}
-	go server.ListenAndServe()
+	go func() {
+		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			log.Printf("HTTP server error: %v", err)
+		}
+	}()
 
 	// Listen for shutdown and wait
 	quit := make(chan os.Signal, 1)
@@ -71,5 +75,7 @@ func main() {
 	//After shutdown signal is received, wait 10 seconds and shut down
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	server.Shutdown(ctx)
+	if err := server.Shutdown(ctx); err != nil {
+		log.Printf("Server shutdown error: %v", err)
+	}
 }

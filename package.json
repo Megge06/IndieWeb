@@ -17,9 +17,17 @@
     "start:blog": "npm run start -w frontend/blog",
     "start:photos": "npm run start -w frontend/photos",
     "dev": "npm run start",
-    "clean": "rm -rf frontend/blog/_site frontend/photos/_site node_modules"
+    "clean": "rm -rf frontend/blog/_site frontend/photos/_site node_modules",
+    "lint": "npm run lint:js && npm run lint:go",
+    "lint:js": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:go": "cd backend && golangci-lint run"
   },
   "devDependencies": {
-    "concurrently": "^10.0.4"
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^10.0.4",
+    "eslint": "^10.8.0",
+    "globals": "^17.8.0",
+    "prettier": "^3.9.6"
   }
 }

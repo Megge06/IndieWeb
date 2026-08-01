@@ -63,7 +63,6 @@ function positionTriangle(button) {
   const tStyles = getComputedStyle(ref);
   const triangleWidth =
     parseFloat(tStyles.borderLeftWidth) + parseFloat(tStyles.borderRightWidth);
-  const triangleHeight = parseFloat(tStyles.borderTopWidth);
 
   const topOffset = parseFloat(tStyles.getPropertyValue("--top")) || 100;
 

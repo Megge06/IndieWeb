@@ -23,21 +23,22 @@ updateDateTime();
 
 setInterval(updateDateTime, 1000);
 
-function openLightbox(url, alt) {
+window.openLightbox = function openLightbox(url, alt) {
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
   lightboxImg.src = url;
   lightboxImg.alt = alt;
   lightbox.style.display = "flex";
   document.body.style.overflow = "hidden";
-}
+};
 
-function closeLightbox() {
+window.closeLightbox = function closeLightbox() {
   const lightbox = document.getElementById("lightbox");
   lightbox.style.display = "none";
   document.body.style.overflow = "auto";
-}
+};
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeLightbox();
+  if (e.key === "Escape") window.closeLightbox();
 });
+

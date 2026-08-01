@@ -13,54 +13,6 @@ Each section has a unique aesthetic inspired by different games and media:
 - **Links** - Minecraft 3D panorama with social links
 - **Guestbook** - Persona 5 themed interactive guestbook with avatar selection
 
-## Structure
-
-```text
-frontend/           All frontend/static content
-├── about_me/       About Me page
-├── blog/           Eleventy-powered blog
-├── photos/         Eleventy-powered photo gallery
-├── links/          Links page
-├── guestbook/      Guestbook page
-├── assets/         Static assets (favicons, images)
-├── fonts/          Custom fonts
-├── index.html      Home page
-├── style.css       Home styles
-├── script.js       Home scripts
-└── reset.css       Global CSS reset
-
-backend/            Go backend
-├── Dockerfile
-├── go.mod
-├── go.sum
-├── main.go         HTTP server, SQLite init, graceful shutdown
-├── guestbook.go    Guestbook REST API (GET/POST /api/guestbook)
-├── comments.go     Blog comments REST API (GET/POST /api/comments)
-├── middleware.go   CORS middleware
-└── ratelimit.go    IP-based rate limiting
-
-nginx.conf          Reverse proxy config (static files + /api/)
-docker-compose.yaml Multi-service compose (nginx + Go backend)
-```
-
-## Backend
-
-The Go backend exposes the following REST endpoints:
-
-| Method | Path                            | Description                        |
-| ------ | ------------------------------- | ---------------------------------- |
-| `GET`  | `/api/guestbook?page=N&limit=N` | Fetch paginated guestbook entries  |
-| `POST` | `/api/guestbook`                | Submit a new guestbook entry       |
-| `GET`  | `/api/comments?post=slug`       | Fetch all comments for a blog post |
-| `POST` | `/api/comments`                 | Submit a new blog post comment     |
-
-Data is stored in a SQLite database at `/data/guestbook.db` in two tables:
-
-- `entries` — Guestbook entries (name, message, date, avatar)
-- `blog_comments` — Blog comments (name, message, date, post slug)
-
-All write endpoints share the same IP-based rate limiter (1 request per hour per IP).
-
 ## Development
 
 Install dependencies:
@@ -94,6 +46,17 @@ Clean build artifacts:
 
 ```bash
 npm run clean
+```
+
+### Linting
+
+Linting is configured for both the JavaScript frontend (ESLint) and Go backend (`golangci-lint`):
+
+```bash
+npm run lint           # Run all linters (JS + Go)
+npm run lint:js        # Lint JavaScript files (ESLint)
+npm run lint:fix       # Automatically fix JS linting issues
+npm run lint:go        # Lint Go backend (golangci-lint)
 ```
 
 ### Using Docker

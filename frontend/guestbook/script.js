@@ -90,7 +90,7 @@ function getRandom(min, max) {
 const avatarList = Object.keys(avatarColors);
 
 function setAvatarSelection(avatarName) {
-  if (!avatarColors.hasOwnProperty(avatarName)) return;
+  if (!Object.prototype.hasOwnProperty.call(avatarColors, avatarName)) return;
   const avatar = document.querySelector("#avatar-preview");
   avatar.src = "../assets/guestbook/chat_icons/" + avatarName + ".webp";
   avatar.alt = avatarName;
@@ -198,7 +198,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const selectedAvatar = document.querySelector("#form-avatar").value;
-  if (!avatarColors.hasOwnProperty(selectedAvatar)) {
+  if (!Object.prototype.hasOwnProperty.call(avatarColors, selectedAvatar)) {
     console.error("Invalid avatar selected:", selectedAvatar);
     return;
   }

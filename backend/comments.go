@@ -23,7 +23,8 @@ type UserBlogComment struct {
 // Handles GET/POST requests for blog comments
 func (d *Database) commentsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	if r.Method == "GET" {
+	switch r.Method {
+	case http.MethodGet:
 		postSlug := r.URL.Query().Get("post")
 		if postSlug == "" {
 			http.Error(w, "missing post slug", http.StatusBadRequest)
@@ -35,7 +36,7 @@ func (d *Database) commentsHandler(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "database error", http.StatusInternalServerError)
 			return
 		}
-		defer rows.Close()
+		defer func() { _ = rows.Close() }()
 
 		comments := []BlogComment{}
 		for rows.Next() {
@@ -47,8 +48,8 @@ func (d *Database) commentsHandler(w http.ResponseWriter, r *http.Request) {
 			}
 			comments = append(comments, c)
 		}
-		json.NewEncoder(w).Encode(comments)
-	} else if r.Method == "POST" {
+		_ = json.NewEncoder(w).Encode(comments)
+	case http.MethodPost:
 		if !allowRateLimit(rateLimitKey(r)) {
 			http.Error(w, "rate limited", http.StatusTooManyRequests)
 			return
@@ -79,7 +80,7 @@ func (d *Database) commentsHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		w.WriteHeader(http.StatusCreated)
-	} else {
+	default:
 		w.WriteHeader(http.StatusMethodNotAllowed)
 	}
 }
