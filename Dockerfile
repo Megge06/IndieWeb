@@ -25,6 +25,7 @@ COPY --from=builder /app/frontend/about_me /usr/share/nginx/html/about_me
 COPY --from=builder /app/frontend/assets /usr/share/nginx/html/assets
 COPY --from=builder /app/frontend/fonts /usr/share/nginx/html/fonts
 COPY --from=builder /app/frontend/links /usr/share/nginx/html/links
+COPY --from=builder /app/frontend/404 /usr/share/nginx/html/404
 
 COPY --from=builder /app/frontend/blog/_site /usr/share/nginx/html/blog
 COPY --from=builder /app/frontend/photos/_site /usr/share/nginx/html/photos
