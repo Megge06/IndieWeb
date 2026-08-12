@@ -17,7 +17,7 @@
   </author>
   {%- for post in collections.posts %}
   {%- if loop.index0 < 10 %}
-  {%- set absolutePostUrl = "https://megge.me" + post.url %}
+  {%- set absolutePostUrl = "https://megge.me" + (post.url | url) %}
   <entry>
     <title>{{ post.data.title }}</title>
     <link href="{{ absolutePostUrl }}" />
