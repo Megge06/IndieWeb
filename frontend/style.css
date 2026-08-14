@@ -20,7 +20,11 @@ body {
   color: #333;
   font-weight: normal;
   height: 100%;
+  overflow: hidden;
   background: linear-gradient(135deg, #0000aa 0%, #0000aa 100%);
+}
+html {
+  overflow: hidden;
 }
 a {
   text-decoration: none;
